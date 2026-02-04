@@ -2,207 +2,159 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<title>Deza Store | Brookhaven Gamepass</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toko Robux</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f2f2f2;
+  color:#222;
 }
-
-body {
-  margin: 0;
-  background: #f2f2f2;
-  color: #222;
+header img{
+  width:100%;
+  border-radius:0 0 20px 20px;
 }
-
-.banner-wrapper {
-  padding: 16px;
+.container{
+  padding:16px;
 }
-
-.banner {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,.2);
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:16px;
 }
-
-.banner img {
-  width: 100%;
-  display: block;
+.btn{
+  background:#000;
+  color:#fff;
+  padding:14px;
+  border:none;
+  width:100%;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
 }
-
-.title {
-  text-align: center;
-  margin: 20px 0 10px;
+.btn:hover{opacity:.85}
+select,input{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
 }
-
-.title h1 {
-  margin: 0;
-  font-size: 28px;
+.gamepass{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
-
-.title p {
-  margin: 6px 0 0;
-  color: #666;
+.item{
+  background:#fafafa;
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+  cursor:pointer;
+  border:2px solid transparent;
 }
-
-.container {
-  padding: 20px;
+.item.active{
+  border-color:#000;
 }
-
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.12);
-  cursor: pointer;
-  transition: .2s;
+.item b{display:block;margin-top:6px}
+.avatar{
+  text-align:center;
+  margin:10px 0;
 }
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-/* ===== MODAL ===== */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal-box {
-  background: white;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 18px;
-  padding: 20px;
-  animation: pop .25s ease;
-}
-
-@keyframes pop {
-  from { transform: scale(.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.modal-box h3 {
-  margin-top: 0;
-  text-align: center;
-}
-
-select, input, button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-button {
-  background: #25D366;
-  color: white;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: .9;
-}
-
-.close {
-  text-align: center;
-  margin-top: 12px;
-  color: #888;
-  cursor: pointer;
+.avatar img{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:2px solid #ddd;
 }
 </style>
 </head>
 
 <body>
 
-<audio id="clickSound">
-  <source src="click.mp3" type="audio/mpeg">
-</audio>
+<header>
+  <img src="banner.jpg">
+</header>
 
-<!-- BANNER -->
-<div class="banner-wrapper">
-  <div class="banner">
-    <img src="banner.jpg" alt="Banner">
-  </div>
-</div>
-
-<!-- TITLE -->
-<div class="title">
-  <h1>TOKO ROBUX</h1>
-  <p>Murah • Aman • Terpercaya</p>
-</div>
-
-<!-- CARD -->
 <div class="container">
-  <div class="card" onclick="openModal()">
-    <h3>💎 Jual Robux</h3>
-    <p>Beli robux cepat & otomatis</p>
-  </div>
+
+<div class="card">
+<h3>🔥 Brookhaven Gamepass</h3>
+<img src="banner1.jpg" style="width:100%;border-radius:12px;margin-bottom:10px">
+
+<div class="gamepass" id="list">
+  <div class="item" onclick="pilih(this,'Penthouse','25000')">🏠<b>Penthouse</b>25K</div>
+  <div class="item" onclick="pilih(this,'Music','30000')">🎵<b>Music</b>30K</div>
+  <div class="item" onclick="pilih(this,'Speed','30000')">⚡<b>Speed</b>30K</div>
+  <div class="item" onclick="pilih(this,'Premium','50000')">⭐<b>Premium</b>50K</div>
+  <div class="item" onclick="pilih(this,'Vehicle','110000')">🚗<b>Vehicle</b>110K</div>
+  <div class="item" onclick="pilih(this,'VIP','140000')">👑<b>VIP</b>140K</div>
+</div>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h3>⚡ Beli Robux Cepat</h3>
+<div class="card">
+<h3>Username Roblox</h3>
 
-    <select id="robux">
-      <option value="">Pilih Jumlah Robux</option>
-      <option>100 Robux</option>
-      <option>200 Robux</option>
-      <option>300 Robux</option>
-      <option>400 Robux</option>
-      <option>500 Robux</option>
-      <option>600 Robux</option>
-      <option>700 Robux</option>
-      <option>800 Robux</option>
-      <option>900 Robux</option>
-      <option>1000 Robux</option>
-    </select>
+<div class="avatar">
+<img id="avatar" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-Default.png">
+</div>
 
-    <input type="text" id="username" placeholder="Username Roblox">
+<input type="text" id="username" placeholder="Contoh: Jibranisme1901" oninput="loadAvatar()">
 
-    <button onclick="beli()">Beli Sekarang</button>
+<p id="detail"></p>
+<button class="btn" onclick="beli()">Beli Sekarang</button>
+</div>
 
-    <div class="close" onclick="closeModal()">Tutup</div>
-  </div>
 </div>
 
 <script>
-const sound = document.getElementById("clickSound");
+let gamepass="", harga="";
 
-function openModal() {
-  sound.play();
-  document.getElementById("modal").style.display = "flex";
+function pilih(el,nama,h){
+  document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  gamepass=nama;
+  harga=h;
+  document.getElementById("detail").innerHTML =
+    `<b>Dipilih:</b> ${nama}<br><b>Harga:</b> Rp${Number(h).toLocaleString()}`;
 }
 
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
+async function loadAvatar(){
+  const u=document.getElementById("username").value;
+  if(u.length<3)return;
+
+  const r=await fetch("https://users.roblox.com/v1/usernames/users",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({usernames:[u]})
+  });
+  const d=await r.json();
+  if(!d.data[0])return;
+  const id=d.data[0].id;
+  document.getElementById("avatar").src=
+  `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=150x150&format=Png&isCircular=true`;
 }
 
-function beli() {
-  const robux = document.getElementById("robux").value;
-  const user = document.getElementById("username").value;
-
-  if (!robux || !user) {
-    alert("Lengkapi data dulu!");
+function beli(){
+  const u=document.getElementById("username").value;
+  if(!u||!gamepass){
+    alert("Lengkapi pilihan & username!");
     return;
   }
+  const pesan=
+`Halo Deza Store,
+Saya mau beli Gamepass Brookhaven
 
-  const pesan = `Halo, saya mau beli ${robux}%0AUsername Roblox: ${user}`;
-  const wa = `https://wa.me/6287897493566?text=${pesan}`;
+• Username: ${u}
+• Gamepass: ${gamepass}
+• Harga: Rp${Number(harga).toLocaleString()}`;
 
-  window.location.href = wa;
+  window.location.href=
+  `https://wa.me/6287897493566?text=${encodeURIComponent(pesan)}`;
 }
 </script>
 
